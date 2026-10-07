@@ -3,44 +3,55 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>EcoSim</title>
+<title>ECOSIM</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="app">
-  <main><canvas id="world"></canvas></main>
-  <aside>
-    <h1>EcoSim</h1>
-    <section id="stats"></section>
-    <section class="controls">
-      <button id="toggle">Pausar</button>
-      <button id="reset">Reiniciar</button>
-      <label>Velocidad <select id="speed"></select></label>
-      <label class="check"><input type="checkbox" id="perception"> Mostrar percepción</label>
-    </section>
-    <section id="spawners"><h2>Spawn manual</h2></section>
-  </aside>
+<canvas id="cv"></canvas>
+
+<div id="menu">
+  <div class="card">
+    <h1>ECOSIM</h1><p class="sub">Un sandbox de ecosistemas. Crea un mundo, suelta vida y mira qué pasa.</p>
+    <h3>CREAR ECOSISTEMA</h3>
+    <div id="maps" class="grid5"></div>
+    <div class="sl"><label>🌱 Plantas <b id="vp"></b></label><input type="range" id="np" min="0" max="400" step="10"></div>
+    <div class="sl"><label>🦌 Herbívoros <b id="vh"></b></label><input type="range" id="nh" min="0" max="100" step="1"></div>
+    <div class="sl"><label>🐺 Carnívoros <b id="vc"></b></label><input type="range" id="nc" min="0" max="30" step="1"></div>
+    <div id="diffs" class="seg"></div>
+    <button id="create" class="big">CREAR MUNDO</button>
+    <div id="menuSaves"></div>
+    <button id="resume" class="ghost" hidden>↩ Volver al mundo actual</button>
+  </div>
 </div>
-<script src="js/utils.js"></script>
-<script src="js/config.js"></script>
-<script src="js/entities/organism.js"></script>
+
+<div id="hud"></div>
+<div id="bar">
+  <button id="bPlay" title="Pausa/Play">⏸️</button>
+  <span id="speeds"></span>
+  <button id="bSkip" title="Saltar 1 día">⏭️ 1 día</button>
+  <button id="bDoc" title="Modo documental">🎥</button>
+  <button id="bFit" title="Ver todo el mapa">🗺️</button>
+  <button id="bMus" title="Música">🎵</button>
+  <button id="bFx" title="Efectos">🔊</button>
+  <button id="bMenu" title="Menú">🏠</button>
+</div>
+<div id="banner" hidden></div>
+<div id="ticker"></div>
+<div id="dock"><div id="tabs"></div><div id="panel"></div></div>
+<div id="toasts"></div>
+
+<script src="js/core.js"></script>
+<script src="js/genetics.js"></script>
+<script src="js/plants.js"></script>
+<script src="js/animals.js"></script>
+<script src="js/events.js"></script>
+<script src="js/story.js"></script>
+<script src="js/meta.js"></script>
+<script src="js/experiments.js"></script>
+<script src="js/save.js"></script>
+<script src="js/audio.js"></script>
 <script src="js/world.js"></script>
-<script src="js/systems/spawning.js"></script>
-<script src="js/systems/perception.js"></script>
-<script src="js/systems/targeting.js"></script>
-<script src="js/systems/movement.js"></script>
-<script src="js/systems/feeding.js"></script>
-<script src="js/systems/combat.js"></script>
-<script src="js/systems/lifecycle.js"></script>
-<script src="js/systems/sizing.js"></script>
-<script src="js/systems/effects.js"></script>
-<script src="js/systems/stats.js"></script>
-<script src="js/behaviors/common.js"></script>
-<script src="js/behaviors/herbivore.js"></script>
-<script src="js/behaviors/carnivore.js"></script>
-<script src="js/behaviors/behavior-system.js"></script>
-<script src="js/renderer.js"></script>
-<script src="js/engine.js"></script>
+<script src="js/render.js"></script>
 <script src="js/ui.js"></script>
 <script src="js/main.js"></script>
 </body>
